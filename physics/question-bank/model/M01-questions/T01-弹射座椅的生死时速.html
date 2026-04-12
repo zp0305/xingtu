@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹射座椅的生死时速 - 星途物理试题库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        .problem-content { line-height: 1.8; }
+        .problem-content p { margin-bottom: 1rem; }
+        .hint-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; }
+        .solution-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; margin: 1rem 0; }
+        .answer-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1rem 0; }
+        .options-list { margin: 1rem 0; }
+        .option-label { display: block; padding: 0.75rem; margin: 0.5rem 0; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .option-label:hover { border-color: #3b82f6; background: #f0f9ff; }
+        .option-label input { margin-right: 0.5rem; }
+        .answer-input { width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; }
+        .answer-input:focus { border-color: #3b82f6; outline: none; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .btn-secondary { background: #f3f4f6; color: #374151; }
+        .btn-secondary:hover { background: #e5e7eb; }
+        .result-correct { background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .result-wrong { background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .level-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .level-basic { background: #dcfce7; color: #166534; }
+        .level-advance { background: #fef3c7; color: #92400e; }
+        .level-challenge { background: #fee2e2; color: #991b1b; }
+        details { border: 1px solid #e5e7eb; border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+        summary { padding: 1rem; background: #f9fafb; cursor: pointer; font-weight: 500; }
+        details[open] summary { border-bottom: 1px solid #e5e7eb; }
+        .details-content { padding: 1rem; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../M01.html" class="text-lg font-semibold text-gray-700 hover:text-blue-600">← 返回M01题库</a>
+            <span class="text-sm text-gray-500">星途物理试题库</span>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 题目头部 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm text-gray-500">T01</span>
+                <span class="level-badge level-challenge">挑战</span>
+                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                <span class="text-sm text-gray-500">⏱️ 25min</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">弹射座椅的生死时速</h1>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">[</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">分</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">段</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">分</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">析</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">,</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600"> </span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">极</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">值</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">问</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">题</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">,</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600"> </span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">安</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">全</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">评</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">估</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">]</span>
+            </div>
+        </div>
+
+        <!-- 题目内容 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">📝 题目</h2>
+            <div class="problem-content">
+                战斗机飞行员在紧急情况下需要使用弹射座椅逃生。弹射座椅的工作原理：
+
+1. **弹射阶段**：座椅以加速度 $a$ 竖直向上弹射，使飞行员获得向上的初速度
+2. **上升阶段**：弹射结束后，飞行员和座椅继续上升，直到速度减为0
+3. **开伞阶段**：在最高点附近，降落伞自动打开，飞行员安全降落
+
+**安全约束条件**：
+- 飞行员能承受的**最大加速度**：$16g$（$g = 10\ \text{m/s}^2$）
+- 降落伞需要在**高度 $h \geq 100\ \text{m}$** 时才能安全打开
+- 弹射需要在**离地高度 $H \geq 5\ \text{m}$** 时启动（防止座椅触地）
+
+**已知**：某型战斗机低空飞行时发动机故障，飞行员需要在离地 $10\ \text{m}$ 时启动弹射。
+
+**问**：
+1. 弹射座椅应以多大的加速度弹射，才能使飞行员在 $100\ \text{m}$ 以上高度达到最高点？
+2. 这个加速度是否在人体可承受范围内？
+3. 如果战斗机在离地 $200\ \text{m}$ 时故障，最优弹射策略是什么？
+
+> ⚠️ 这是一道真实的工程问题，涉及生命安全。你的计算可能决定一个人的生死。
+
+---
+            </div>
+            
+        </div>
+
+        <!-- 作答区 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">✏️ 你的答案</h2>
+            <div class="answer-box">
+                <input type="number" id="user-answer" class="answer-input" placeholder="输入数字答案...">
+                <div class="flex gap-3 mt-4">
+                    <button onclick="checkAnswer()" class="btn btn-primary">检查答案</button>
+                    <button onclick="showHint()" class="btn btn-secondary">💡 提示</button>
+                    <button onclick="showSolution()" class="btn btn-secondary">📖 解析</button>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <!-- 提示（默认隐藏） -->
+        <div id="hint-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">💡 思路提示</h2>
+                <div class="hint-box">
+                    暂无提示
+                </div>
+            </div>
+        </div>
+
+        <!-- 解析（默认隐藏） -->
+        <div id="solution-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">📖 完整解析</h2>
+                <div class="solution-box problem-content">
+                    ### 问题1：所需最小加速度
+
+设座椅导轨长度 $s = 1.5\ \text{m}$，要求 $H_{\text{max}} \geq 100\ \text{m}$。
+
+$$H_{\text{max}} = 10 + s + \frac{as}{g} \geq 100$$
+$$\frac{as}{g} \geq 88.5$$
+$$a \geq \frac{88.5 \times 10}{1.5} = 590\ \text{m/s}^2 = 59g$$
+
+**答案：至少需要约 $60g$ 的加速度。**
+
+### 问题2：人体可承受性
+
+**$60g$ 远超 $16g$ 的极限。**
+
+在 $60g$ 加速度下：
+- 飞行员体重 $70\ \text{kg}$，座椅对其作用力 $F = ma = 70 \times 590 \approx 41\ \text{kN}$（约4吨力）
+- 血液向下涌，大脑缺血，可能昏迷
+- 脊柱压缩，可能骨折
+
+**结论：单纯靠惯性上升，在 $10\ \text{m}$ 高度弹射不可行。**
+
+### 问题3：$200\ \text{m}$ 高度的最优策略
+
+当 $H_0 = 200\ \text{m}$ 时：
+
+$$H_{\text{max}} = 200 + 1.5 + \frac{160 \times 1.5}{10} = 201.5 + 24 = 225.5\ \text{m}$$
+
+使用最大允许加速度 $16g$，最高点 $225.5\ \text{m}$，远高于 $100\ \text{m}$ 要求。
+
+**最优策略**：
+- 立即弹射
+- 使用 $16g$ 加速度（人体极限）
+- 最高点 $225.5\ \text{m}$，有足够时间开伞
+
+如果担心 $16g$ 伤害，可以用更小加速度，只要满足：
+$$200 + 1.5 + \frac{a \times 1.5}{10} \geq 100$$
+
+这总是成立（$a > 0$ 即可），所以可以用较温和的加速度。
+                </div>
+            </div>
+        </div>
+
+        <!-- 方法总结 -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-lg font-semibold mb-4">🎯 方法总结</h2>
+            <div class="problem-content">
+                暂无总结
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 正确答案
+        const correctAnswer = "280";
+        const answerType = "number";
+        
+        // 检查答案
+        function checkAnswer() {
+            let userAnswer = '';
+            if (answerType === 'choice') {
+                const selected = document.querySelector('input[name="answer"]:checked');
+                userAnswer = selected ? selected.value : '';
+            } else {
+                userAnswer = document.getElementById('user-answer').value.trim();
+            }
+            
+            if (!userAnswer) {
+                alert('请先输入答案');
+                return;
+            }
+            
+            // 判断答案（简化判断逻辑）
+            let isCorrect = false;
+            if (answerType === 'number') {
+                const userNum = parseFloat(userAnswer);
+                const correctNum = parseFloat(correctAnswer);
+                isCorrect = Math.abs(userNum - correctNum) < 0.01;
+            } else if (answerType === 'choice') {
+                isCorrect = userAnswer.toUpperCase() === correctAnswer.toUpperCase();
+            } else {
+                // 文本答案使用包含判断
+                isCorrect = userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer);
+            }
+            
+            const resultDiv = document.getElementById('result');
+            if (isCorrect) {
+                resultDiv.innerHTML = '<div class="result-correct">✅ 回答正确！</div>';
+            } else {
+                resultDiv.innerHTML = '<div class="result-wrong">❌ 答案不正确，再看看提示或解析？</div>';
+            }
+        }
+        
+        // 显示提示
+        function showHint() {
+            document.getElementById('hint-section').classList.remove('hidden');
+        }
+        
+        // 显示解析
+        function showSolution() {
+            document.getElementById('solution-section').classList.remove('hidden');
+        }
+        
+        // 渲染数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        });
+    </script>
+</body>
+</html>

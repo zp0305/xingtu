@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-t图像的隐藏信息 - 星途物理试题库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        .problem-content { line-height: 1.8; }
+        .problem-content p { margin-bottom: 1rem; }
+        .hint-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; }
+        .solution-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; margin: 1rem 0; }
+        .answer-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1rem 0; }
+        .options-list { margin: 1rem 0; }
+        .option-label { display: block; padding: 0.75rem; margin: 0.5rem 0; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .option-label:hover { border-color: #3b82f6; background: #f0f9ff; }
+        .option-label input { margin-right: 0.5rem; }
+        .answer-input { width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; }
+        .answer-input:focus { border-color: #3b82f6; outline: none; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .btn-secondary { background: #f3f4f6; color: #374151; }
+        .btn-secondary:hover { background: #e5e7eb; }
+        .result-correct { background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .result-wrong { background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .level-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .level-basic { background: #dcfce7; color: #166534; }
+        .level-advance { background: #fef3c7; color: #92400e; }
+        .level-challenge { background: #fee2e2; color: #991b1b; }
+        details { border: 1px solid #e5e7eb; border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+        summary { padding: 1rem; background: #f9fafb; cursor: pointer; font-weight: 500; }
+        details[open] summary { border-bottom: 1px solid #e5e7eb; }
+        .details-content { padding: 1rem; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../M01.html" class="text-lg font-semibold text-gray-700 hover:text-blue-600">← 返回M01题库</a>
+            <span class="text-sm text-gray-500">星途物理试题库</span>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 题目头部 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm text-gray-500">B03</span>
+                <span class="level-badge level-basic">基础</span>
+                <span class="text-yellow-500">⭐</span>
+                <span class="text-sm text-gray-500">⏱️ 5min</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">v-t图像的隐藏信息</h1>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">[</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">图</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">像</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">法</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">]</span>
+            </div>
+        </div>
+
+        <!-- 题目内容 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">📝 题目</h2>
+            <div class="problem-content">
+                某物体运动的 $v-t$ 图像如下（示意图）：
+
+```
+v(m/s)
+  8 |     ______
+    |    /      \
+  4 |   /        \
+    |  /          \
+  0 +--+--+--+--+--→ t(s)
+    0  2  4  6  8
+```
+
+图像描述：
+- $0\sim2\text{s}$：从原点斜线上升到 $(2, 8)$
+- $2\sim6\text{s}$：水平线到 $(6, 8)$
+- $6\sim8\text{s}$：斜线下降到 $(8, 0)$
+
+**问：**
+1. 物体的最大速度是多少？发生在什么时刻？
+2. $0\sim8\text{s}$ 内的总位移是多少？
+3. $0\sim2\text{s}$ 内的加速度是多少？
+
+---
+            </div>
+            
+        <div class="options-list">
+            <label class="option-label"><input type="radio" name="answer" value="A"> A. 物体做匀加速直线运动</label>
+            <label class="option-label"><input type="radio" name="answer" value="B"> B. 物体的初速度为v₁</label>
+            <label class="option-label"><input type="radio" name="answer" value="C"> C. t₁时刻的加速度为v₁/t₁</label>
+            <label class="option-label"><input type="radio" name="answer" value="D"> D. 0~t₁时间内的位移为v₁t₁</label>
+        </div>
+        
+        </div>
+
+        <!-- 作答区 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">✏️ 你的答案</h2>
+            <div class="answer-box">
+                <div class="options-list" id="choice-options">
+        <div class="options-list">
+            <label class="option-label"><input type="radio" name="answer" value="A"> A. 物体做匀加速直线运动</label>
+            <label class="option-label"><input type="radio" name="answer" value="B"> B. 物体的初速度为v₁</label>
+            <label class="option-label"><input type="radio" name="answer" value="C"> C. t₁时刻的加速度为v₁/t₁</label>
+            <label class="option-label"><input type="radio" name="answer" value="D"> D. 0~t₁时间内的位移为v₁t₁</label>
+        </div>
+        </div>
+                <div class="flex gap-3 mt-4">
+                    <button onclick="checkAnswer()" class="btn btn-primary">检查答案</button>
+                    <button onclick="showHint()" class="btn btn-secondary">💡 提示</button>
+                    <button onclick="showSolution()" class="btn btn-secondary">📖 解析</button>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <!-- 提示（默认隐藏） -->
+        <div id="hint-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">💡 思路提示</h2>
+                <div class="hint-box">
+                    **v-t图像的两条黄金法则**：
+1. **纵坐标** = 瞬时速度
+2. **图像下的面积** = 位移
+3. **图像的斜率** = 加速度
+
+不用背公式，图像本身包含所有信息。
+                </div>
+            </div>
+        </div>
+
+        <!-- 解析（默认隐藏） -->
+        <div id="solution-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">📖 完整解析</h2>
+                <div class="solution-box problem-content">
+                    ### 问题1：最大速度
+
+观察图像，速度最高点在 $v = 8\ \text{m/s}$。
+
+**答**：最大速度 $8\ \text{m/s}$，发生在 $2\sim6\text{s}$ 期间。
+
+### 问题2：总位移
+
+v-t图像下的面积 = 位移
+
+图像分为三部分：
+- 三角形（$0\sim2\text{s}$）：$\frac{1}{2} \times 2 \times 8 = 8\ \text{m}$
+- 矩形（$2\sim6\text{s}$）：$4 \times 8 = 32\ \text{m}$
+- 三角形（$6\sim8\text{s}$）：$\frac{1}{2} \times 2 \times 8 = 8\ \text{m}$
+
+**总位移**：$8 + 32 + 8 = 48\ \text{m}$
+
+### 问题3：加速度
+
+$0\sim2\text{s}$ 内的斜率：
+
+$$a = \frac{\Delta v}{\Delta t} = \frac{8-0}{2-0} = 4\ \text{m/s}^2$$
+
+**答**：加速度 $4\ \text{m/s}^2$
+                </div>
+            </div>
+        </div>
+
+        <!-- 方法总结 -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-lg font-semibold mb-4">🎯 方法总结</h2>
+            <div class="problem-content">
+                **v-t图像黄金法则**：
+
+| 图像元素 | 物理意义 | 计算方式 |
+|:---:|:---|:---|
+| 纵坐标 | 瞬时速度 | 直接读数 |
+| 斜率 | 加速度 | $\frac{\Delta v}{\Delta t}$ |
+| 下方面积 | 位移 | 几何计算 |
+| 上方为正 | 正方向运动 | — |
+| 下方为负 | 反方向运动 | 面积为负 |
+
+**口诀**：
+> 🎯 **"v-t图像三要素，坐标斜率加面积"**
+
+---
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 正确答案
+        const correctAnswer = "C";
+        const answerType = "choice";
+        
+        // 检查答案
+        function checkAnswer() {
+            let userAnswer = '';
+            if (answerType === 'choice') {
+                const selected = document.querySelector('input[name="answer"]:checked');
+                userAnswer = selected ? selected.value : '';
+            } else {
+                userAnswer = document.getElementById('user-answer').value.trim();
+            }
+            
+            if (!userAnswer) {
+                alert('请先输入答案');
+                return;
+            }
+            
+            // 判断答案（简化判断逻辑）
+            let isCorrect = false;
+            if (answerType === 'number') {
+                const userNum = parseFloat(userAnswer);
+                const correctNum = parseFloat(correctAnswer);
+                isCorrect = Math.abs(userNum - correctNum) < 0.01;
+            } else if (answerType === 'choice') {
+                isCorrect = userAnswer.toUpperCase() === correctAnswer.toUpperCase();
+            } else {
+                // 文本答案使用包含判断
+                isCorrect = userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer);
+            }
+            
+            const resultDiv = document.getElementById('result');
+            if (isCorrect) {
+                resultDiv.innerHTML = '<div class="result-correct">✅ 回答正确！</div>';
+            } else {
+                resultDiv.innerHTML = '<div class="result-wrong">❌ 答案不正确，再看看提示或解析？</div>';
+            }
+        }
+        
+        // 显示提示
+        function showHint() {
+            document.getElementById('hint-section').classList.remove('hidden');
+        }
+        
+        // 显示解析
+        function showSolution() {
+            document.getElementById('solution-section').classList.remove('hidden');
+        }
+        
+        // 渲染数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        });
+    </script>
+</body>
+</html>

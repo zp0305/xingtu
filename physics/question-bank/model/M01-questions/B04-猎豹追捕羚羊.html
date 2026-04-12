@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猎豹追捕羚羊 - 星途物理试题库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        .problem-content { line-height: 1.8; }
+        .problem-content p { margin-bottom: 1rem; }
+        .hint-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; }
+        .solution-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; margin: 1rem 0; }
+        .answer-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1rem 0; }
+        .options-list { margin: 1rem 0; }
+        .option-label { display: block; padding: 0.75rem; margin: 0.5rem 0; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .option-label:hover { border-color: #3b82f6; background: #f0f9ff; }
+        .option-label input { margin-right: 0.5rem; }
+        .answer-input { width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; }
+        .answer-input:focus { border-color: #3b82f6; outline: none; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .btn-secondary { background: #f3f4f6; color: #374151; }
+        .btn-secondary:hover { background: #e5e7eb; }
+        .result-correct { background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .result-wrong { background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .level-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .level-basic { background: #dcfce7; color: #166534; }
+        .level-advance { background: #fef3c7; color: #92400e; }
+        .level-challenge { background: #fee2e2; color: #991b1b; }
+        details { border: 1px solid #e5e7eb; border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+        summary { padding: 1rem; background: #f9fafb; cursor: pointer; font-weight: 500; }
+        details[open] summary { border-bottom: 1px solid #e5e7eb; }
+        .details-content { padding: 1rem; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../M01.html" class="text-lg font-semibold text-gray-700 hover:text-blue-600">← 返回M01题库</a>
+            <span class="text-sm text-gray-500">星途物理试题库</span>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 题目头部 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm text-gray-500">B04</span>
+                <span class="level-badge level-basic">基础</span>
+                <span class="text-yellow-500">⭐⭐⭐</span>
+                <span class="text-sm text-gray-500">⏱️ 10min</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">猎豹追捕羚羊</h1>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">[</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">图</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">像</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">法</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">,</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600"> </span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">公</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">式</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">法</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">]</span>
+            </div>
+        </div>
+
+        <!-- 题目内容 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">📝 题目</h2>
+            <div class="problem-content">
+                一只猎豹发现前方 $50\ \text{m}$ 处有一只羚羊。猎豹从静止开始以 $a = 4\ \text{m/s}^2$ 的加速度加速，羚羊同时以 $v = 10\ \text{m/s}$ 的速度匀速逃跑。
+
+**问：猎豹能否追上羚羊？如果能，需要多长时间？**
+
+> 💡 提示：猎豹不会无限加速，它的最大速度约为 $30\ \text{m/s}$。但在这个问题中，追上羚羊时猎豹可能还没有达到最大速度。
+
+---
+            </div>
+            
+        </div>
+
+        <!-- 作答区 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">✏️ 你的答案</h2>
+            <div class="answer-box">
+                <input type="text" id="user-answer" class="answer-input" placeholder="输入你的答案...">
+                <div class="flex gap-3 mt-4">
+                    <button onclick="checkAnswer()" class="btn btn-primary">检查答案</button>
+                    <button onclick="showHint()" class="btn btn-secondary">💡 提示</button>
+                    <button onclick="showSolution()" class="btn btn-secondary">📖 解析</button>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <!-- 提示（默认隐藏） -->
+        <div id="hint-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">💡 思路提示</h2>
+                <div class="hint-box">
+                    **追及问题的核心**：找到**距离相等**的时刻。
+
+设猎豹追上羚羊用时 $t$，则：
+- 猎豹的位移 = 羚羊的位移 + 初始距离
+
+先假设猎豹在追上之前一直加速，验证这个假设是否成立。
+                </div>
+            </div>
+        </div>
+
+        <!-- 解析（默认隐藏） -->
+        <div id="solution-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">📖 完整解析</h2>
+                <div class="solution-box problem-content">
+                    ### 第一步：列方程
+
+设经过时间 $t$ 猎豹追上羚羊。
+
+**猎豹的位移**（从静止匀加速）：
+$$x_{\text{豹}} = \frac{1}{2}at^2 = \frac{1}{2} \times 4 \times t^2 = 2t^2$$
+
+**羚羊的位移**（匀速）：
+$$x_{\text{羊}} = vt = 10t$$
+
+**追及条件**：
+$$x_{\text{豹}} = x_{\text{羊}} + 50$$
+
+$$2t^2 = 10t + 50$$
+
+### 第二步：解方程
+
+$$2t^2 - 10t - 50 = 0$$
+
+$$t^2 - 5t - 25 = 0$$
+
+用求根公式：
+$$t = \frac{5 + \sqrt{25 + 100}}{2} = \frac{5 + \sqrt{125}}{2} = \frac{5 + 11.2}{2} \approx 8.1\ \text{s}$$
+
+（舍去负根）
+
+### 第三步：验证假设
+
+猎豹追上羚羊时的速度：
+$$v_{\text{豹}} = at = 4 \times 8.1 = 32.4\ \text{m/s}$$
+
+这**超过了**猎豹的实际最大速度 $30\ \text{m/s}$！
+
+所以实际情况是：猎豹先加速到 $30\ \text{m/s}$，然后匀速追赶。
+
+### 第四步：修正计算
+
+**猎豹加速阶段**（$0\sim7.5\text{s}$）：
+- 加速到 $30\ \text{m/s}$ 需要时间：$t_1 = \frac{30}{4} = 7.5\ \text{s}$
+- 这段时间猎豹跑了：$x_1 = \frac{1}{2} \times 4 \times 7.5^2 = 112.5\ \text{m}$
+- 羚羊跑了：$10 \times 7.5 = 75\ \text{m}$
+- 距离差：$112.5 - 75 = 37.5\ \text{m}$（还没追上，还差 $50 - 37.5 = 12.5\ \text{m}$）
+
+**猎豹匀速阶段**（速度 $30\ \text{m/s}$）：
+- 设再经过 $t_2$ 追上
+- 相对速度：$30 - 10 = 20\ \text{m/s}$
+- 需要追赶距离：$12.5\ \text{m}$
+- $t_2 = \frac{12.5}{20} = 0.625\ \text{s}$
+
+### 结论
+
+**能追上！** 总时间：$t = 7.5 + 0.625 = 8.125\ \text{s}$
+
+此时：
+- 猎豹位移：$112.5 + 30 \times 0.625 = 131.25\ \text{m}$
+- 羚羊位移：$10 \times 8.125 = 81.25\ \text{m}$
+- 差值：$131.25 - 81.25 = 50\ \text{m}$ ✓
+                </div>
+            </div>
+        </div>
+
+        <!-- 方法总结 -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-lg font-semibold mb-4">🎯 方法总结</h2>
+            <div class="problem-content">
+                **追及问题三步法**：
+1. **列方程**：追上时两物体位移关系
+2. **解方程**：求追及时间
+3. **验假设**：验证物理过程是否合理（如最大速度限制）
+
+**关键洞察**：
+- 如果追及时速度未达最大，直接解方程
+- 如果追及时速度已达最大，分段计算
+
+**口诀**：
+> 🎯 **"追及先列等式，解完验证假设"**
+
+---
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 正确答案
+        const correctAnswer = "能";
+        const answerType = "text";
+        
+        // 检查答案
+        function checkAnswer() {
+            let userAnswer = '';
+            if (answerType === 'choice') {
+                const selected = document.querySelector('input[name="answer"]:checked');
+                userAnswer = selected ? selected.value : '';
+            } else {
+                userAnswer = document.getElementById('user-answer').value.trim();
+            }
+            
+            if (!userAnswer) {
+                alert('请先输入答案');
+                return;
+            }
+            
+            // 判断答案（简化判断逻辑）
+            let isCorrect = false;
+            if (answerType === 'number') {
+                const userNum = parseFloat(userAnswer);
+                const correctNum = parseFloat(correctAnswer);
+                isCorrect = Math.abs(userNum - correctNum) < 0.01;
+            } else if (answerType === 'choice') {
+                isCorrect = userAnswer.toUpperCase() === correctAnswer.toUpperCase();
+            } else {
+                // 文本答案使用包含判断
+                isCorrect = userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer);
+            }
+            
+            const resultDiv = document.getElementById('result');
+            if (isCorrect) {
+                resultDiv.innerHTML = '<div class="result-correct">✅ 回答正确！</div>';
+            } else {
+                resultDiv.innerHTML = '<div class="result-wrong">❌ 答案不正确，再看看提示或解析？</div>';
+            }
+        }
+        
+        // 显示提示
+        function showHint() {
+            document.getElementById('hint-section').classList.remove('hidden');
+        }
+        
+        // 显示解析
+        function showSolution() {
+            document.getElementById('solution-section').classList.remove('hidden');
+        }
+        
+        // 渲染数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        });
+    </script>
+</body>
+</html>

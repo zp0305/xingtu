@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>故事详情 - 星途物理视界</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* VitePress风格 */
+    .vp-doc {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #213547;
+      line-height: 1.7;
+    }
+    .vp-doc h1 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .vp-doc h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+    .vp-doc h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .vp-doc p { margin-bottom: 1rem; }
+    .vp-doc ul, .vp-doc ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    .vp-doc li { margin-bottom: 0.5rem; }
+    .vp-doc strong { font-weight: 600; color: #2c3e50; }
+    .vp-doc hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+    .vp-doc blockquote { border-left: 4px solid #8b5cf6; padding-left: 1rem; margin: 1rem 0; color: #64748b; font-style: italic; }
+    .vp-doc code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .vp-doc pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    .vp-doc table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .vp-doc th, .vp-doc td { border: 1px solid #e2e8f0; padding: 0.75rem; text-align: left; }
+    .vp-doc th { background: #f8fafc; font-weight: 600; }
+    
+    /* 难度标签 */
+    .difficulty-easy { background: #dcfce7; color: #166534; }
+    .difficulty-medium { background: #fef3c7; color: #92400e; }
+    .difficulty-hard { background: #fee2e2; color: #991b1b; }
+    
+    /* 加载动画 */
+    .loading { text-align: center; padding: 3rem; color: #64748b; }
+    .error { text-align: center; padding: 3rem; color: #dc2626; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- 导航栏 -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="./" class="text-lg font-semibold text-gray-700 hover:text-violet-600">← 物理视界</a>
+      <span class="text-sm text-gray-500">星途高中学习</span>
+    </div>
+  </nav>
+
+  <!-- 主要内容 -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <!-- 加载状态 -->
+    <div id="loading" class="loading">
+      <div class="animate-spin inline-block w-8 h-8 border-4 border-violet-200 border-t-violet-600 rounded-full mb-4"></div>
+      <p>正在加载故事...</p>
+    </div>
+
+    <!-- 错误状态 -->
+    <div id="error" class="error hidden">
+      <h2 class="text-xl font-semibold mb-2">❌ 故事未找到</h2>
+      <p class="mb-4">抱歉，您请求的故事不存在或已被移除。</p>
+      <a href="./" class="text-violet-600 hover:underline">返回物理视界首页</a>
+    </div>
+
+    <!-- 故事内容 -->
+    <article id="story-content" class="hidden">
+      <!-- 头部信息 -->
+      <header class="mb-8 pb-6 border-b border-gray-200">
+        <div class="flex items-center gap-2 mb-3">
+          <span id="story-category" class="text-sm text-gray-500"></span>
+          <span class="text-gray-300">·</span>
+          <span id="story-difficulty" class="text-xs px-2 py-1 rounded-full font-medium"></span>
+        </div>
+        <h1 id="story-title" class="text-3xl font-bold text-gray-900 mb-2"></h1>
+        <p id="story-subtitle" class="text-xl text-gray-600 italic"></p>
+        <div class="flex items-center gap-4 mt-4 text-sm text-gray-500">
+          <span id="story-readtime">📖 阅读时间</span>
+          <span id="story-wordcount">📝 字数</span>
+          <span id="story-author">✍️ 作者</span>
+        </div>
+        <div id="story-tags" class="flex flex-wrap gap-2 mt-4"></div>
+      </header>
+
+      <!-- 正文 -->
+      <div id="story-body" class="vp-doc prose prose-slate max-w-none"></div>
+
+      <!-- 返回导航 -->
+      <footer class="mt-12 pt-6 border-t border-gray-200">
+        <a href="./" class="inline-flex items-center text-violet-600 hover:text-violet-700 font-medium">
+          ← 返回物理视界
+        </a>
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    // 获取URL参数
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Markdown转HTML（简单版）
+    function markdownToHtml(md) {
+      return md
+        // 代码块
+        .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+        // 行内代码
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        // 标题
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        // 粗体
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        // 斜体
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        // 引用
+        .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+        // 水平线
+        .replace(/^---$/gm, '<hr>')
+        // 表格（简化处理）
+        .replace(/\|(.+)\|/g, function(match) {
+          const cells = match.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
+          return `<tr>${cells}</tr>`;
+        })
+        // 列表
+        .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+        .replace(/^- (.+)$/gm, '<li>$1</li>')
+        // 段落
+        .replace(/\n\n/g, '</p><p>')
+        // 包装
+        .replace(/^(.+)$/gm, function(match) {
+          if (match.startsWith('<')) return match;
+          return '<p>' + match + '</p>';
+        })
+        // 清理空段落
+        .replace(/<p><\/p>/g, '');
+    }
+
+    // 加载故事
+    async function loadStory() {
+      const storyId = getQueryParam('id');
+      
+      if (!storyId) {
+        showError();
+        return;
+      }
+
+      try {
+        // 加载故事数据 - 使用相对路径
+        const response = await fetch('../../stories-data.json');
+        if (!response.ok) throw new Error('加载数据失败');
+        
+        const stories = await response.json();
+        const story = stories.find(s => s.id === storyId);
+        
+        if (!story) {
+          showError();
+          return;
+        }
+
+        // 渲染故事
+        renderStory(story);
+      } catch (error) {
+        console.error('加载故事失败:', error);
+        showError();
+      }
+    }
+
+    // 渲染故事
+    function renderStory(story) {
+      // 隐藏加载，显示内容
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('story-content').classList.remove('hidden');
+
+      // 分类名称映射
+      const categoryNames = {
+        'origin': '溯源',
+        'stars': '群星',
+        'fun': '趣玩',
+        'life': '察微',
+        'deep': '思辨',
+        'frontier': '前沿',
+        'tech': '洞见',
+        'mystery': '迷思',
+        'puzzle': '谜题',
+        'scifi': '幻想'
+      };
+
+      // 填充头部信息
+      document.getElementById('story-category').textContent = categoryNames[story.categoryId] || story.categoryId;
+      document.getElementById('story-title').textContent = story.title;
+      document.getElementById('story-subtitle').textContent = story.subtitle;
+      document.getElementById('story-readtime').textContent = `📖 ${story.readTime}分钟阅读`;
+      document.getElementById('story-wordcount').textContent = `📝 ${story.wordCount}字`;
+      document.getElementById('story-author').textContent = `✍️ ${story.author}`;
+
+      // 难度标签
+      const difficultyEl = document.getElementById('story-difficulty');
+      const difficultyMap = { easy: '轻松', medium: '中等', hard: '烧脑' };
+      difficultyEl.textContent = difficultyMap[story.difficulty] || story.difficulty;
+      difficultyEl.className = `text-xs px-2 py-1 rounded-full font-medium difficulty-${story.difficulty}`;
+
+      // 标签
+      const tagsEl = document.getElementById('story-tags');
+      if (story.tags && story.tags.length > 0) {
+        tagsEl.innerHTML = story.tags.map(tag => 
+          `<span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">${tag}</span>`
+        ).join('');
+      }
+
+      // 正文（Markdown转HTML）
+      document.getElementById('story-body').innerHTML = markdownToHtml(story.content);
+
+      // 更新页面标题
+      document.title = `${story.title} - 星途物理视界`;
+    }
+
+    // 显示错误
+    function showError() {
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('error').classList.remove('hidden');
+    }
+
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadStory);
+  </script>
+</body>
+</html>

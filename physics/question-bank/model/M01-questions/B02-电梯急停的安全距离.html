@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电梯急停的安全距离 - 星途物理试题库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        .problem-content { line-height: 1.8; }
+        .problem-content p { margin-bottom: 1rem; }
+        .hint-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; }
+        .solution-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; margin: 1rem 0; }
+        .answer-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1rem 0; }
+        .options-list { margin: 1rem 0; }
+        .option-label { display: block; padding: 0.75rem; margin: 0.5rem 0; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .option-label:hover { border-color: #3b82f6; background: #f0f9ff; }
+        .option-label input { margin-right: 0.5rem; }
+        .answer-input { width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; }
+        .answer-input:focus { border-color: #3b82f6; outline: none; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .btn-secondary { background: #f3f4f6; color: #374151; }
+        .btn-secondary:hover { background: #e5e7eb; }
+        .result-correct { background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .result-wrong { background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .level-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .level-basic { background: #dcfce7; color: #166534; }
+        .level-advance { background: #fef3c7; color: #92400e; }
+        .level-challenge { background: #fee2e2; color: #991b1b; }
+        details { border: 1px solid #e5e7eb; border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+        summary { padding: 1rem; background: #f9fafb; cursor: pointer; font-weight: 500; }
+        details[open] summary { border-bottom: 1px solid #e5e7eb; }
+        .details-content { padding: 1rem; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../M01.html" class="text-lg font-semibold text-gray-700 hover:text-blue-600">← 返回M01题库</a>
+            <span class="text-sm text-gray-500">星途物理试题库</span>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 题目头部 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm text-gray-500">B02</span>
+                <span class="level-badge level-basic">基础</span>
+                <span class="text-yellow-500">⭐⭐</span>
+                <span class="text-sm text-gray-500">⏱️ 6min</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">电梯急停的安全距离</h1>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">[</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">图</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">像</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">法</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">,</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600"> </span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">公</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">式</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">法</span> <span class="px-2 py-1 bg-gray-100 rounded text-sm text-gray-600">]</span>
+            </div>
+        </div>
+
+        <!-- 题目内容 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">📝 题目</h2>
+            <div class="problem-content">
+                一部电梯以 $v = 3\ \text{m/s}$ 的速度匀速上升。突然，安全系统检测到异常，立即启动制动，电梯以 $a = 6\ \text{m/s}^2$ 的加速度匀减速上升。
+
+**问：电梯从制动到完全停止，上升了多少距离？电梯会不会撞到顶部的缓冲器？（已知电梯顶部距缓冲器还有 $1\ \text{m}$）**
+
+---
+            </div>
+            
+        </div>
+
+        <!-- 作答区 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">✏️ 你的答案</h2>
+            <div class="answer-box">
+                <input type="number" id="user-answer" class="answer-input" placeholder="输入数字答案...">
+                <div class="flex gap-3 mt-4">
+                    <button onclick="checkAnswer()" class="btn btn-primary">检查答案</button>
+                    <button onclick="showHint()" class="btn btn-secondary">💡 提示</button>
+                    <button onclick="showSolution()" class="btn btn-secondary">📖 解析</button>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <!-- 提示（默认隐藏） -->
+        <div id="hint-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">💡 思路提示</h2>
+                <div class="hint-box">
+                    这道题可以用**逆向思维**：把匀减速上升看成**反向的匀加速下降**。
+
+如果电梯从静止开始以 $6\ \text{m/s}^2$ 加速下降，达到 $3\ \text{m/s}$ 需要多大距离？
+
+两种方法结果相同，但逆向思维有时更简单。
+                </div>
+            </div>
+        </div>
+
+        <!-- 解析（默认隐藏） -->
+        <div id="solution-section" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4">📖 完整解析</h2>
+                <div class="solution-box problem-content">
+                    ### 方法一：正向计算
+
+**已知**：$v_0 = 3\ \text{m/s}$，$a = -6\ \text{m/s}^2$（减速），$v = 0$
+
+由 $v^2 - v_0^2 = 2ax$：
+
+$$0 - 3^2 = 2 \times (-6) \times x$$
+
+$$x = \frac{9}{12} = 0.75\ \text{m}$$
+
+### 方法二：逆向思维 ⭐
+
+把过程倒过来看：电梯从静止开始，以 $a = 6\ \text{m/s}^2$ 匀加速"下降"，达到 $v = 3\ \text{m/s}$。
+
+$$v^2 = 2ax \Rightarrow x = \frac{v^2}{2a} = \frac{9}{12} = 0.75\ \text{m}$$
+
+### 结论
+
+- 制动距离：$0.75\ \text{m}$
+- 顶部缓冲距离：$1\ \text{m}$
+- $0.75\ \text{m} < 1\ \text{m}$
+
+**电梯不会撞到缓冲器，安全。**
+                </div>
+            </div>
+        </div>
+
+        <!-- 方法总结 -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-lg font-semibold mb-4">🎯 方法总结</h2>
+            <div class="problem-content">
+                **核心思想**：匀减速运动可以逆向看成**反向的匀加速运动**，有时计算更简便。
+
+**口诀**：
+> 🎯 **"正向减速算麻烦，逆向加速更简单"**
+
+**适用场景**：
+- 刹车停止距离
+- 竖直上抛到最高点
+- 任何末速度为0的匀减速过程
+
+---
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 正确答案
+        const correctAnswer = "2.25";
+        const answerType = "number";
+        
+        // 检查答案
+        function checkAnswer() {
+            let userAnswer = '';
+            if (answerType === 'choice') {
+                const selected = document.querySelector('input[name="answer"]:checked');
+                userAnswer = selected ? selected.value : '';
+            } else {
+                userAnswer = document.getElementById('user-answer').value.trim();
+            }
+            
+            if (!userAnswer) {
+                alert('请先输入答案');
+                return;
+            }
+            
+            // 判断答案（简化判断逻辑）
+            let isCorrect = false;
+            if (answerType === 'number') {
+                const userNum = parseFloat(userAnswer);
+                const correctNum = parseFloat(correctAnswer);
+                isCorrect = Math.abs(userNum - correctNum) < 0.01;
+            } else if (answerType === 'choice') {
+                isCorrect = userAnswer.toUpperCase() === correctAnswer.toUpperCase();
+            } else {
+                // 文本答案使用包含判断
+                isCorrect = userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer);
+            }
+            
+            const resultDiv = document.getElementById('result');
+            if (isCorrect) {
+                resultDiv.innerHTML = '<div class="result-correct">✅ 回答正确！</div>';
+            } else {
+                resultDiv.innerHTML = '<div class="result-wrong">❌ 答案不正确，再看看提示或解析？</div>';
+            }
+        }
+        
+        // 显示提示
+        function showHint() {
+            document.getElementById('hint-section').classList.remove('hidden');
+        }
+        
+        // 显示解析
+        function showSolution() {
+            document.getElementById('solution-section').classList.remove('hidden');
+        }
+        
+        // 渲染数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        });
+    </script>
+</body>
+</html>
