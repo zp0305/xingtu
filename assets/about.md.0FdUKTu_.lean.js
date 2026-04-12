@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as r,a4 as o}from"./chunks/framework._in6GHBg.js";const h=JSON.parse('{"title":"关于星途","description":"","frontmatter":{},"headers":[],"relativePath":"about.md","filePath":"about.md"}'),l={name:"about.md"};function i(n,a,s,_,d,c){return e(),r("div",null,[...a[0]||(a[0]=[o("",8)])])}const p=t(l,[["render",i]]);export{h as __pageData,p as default};
